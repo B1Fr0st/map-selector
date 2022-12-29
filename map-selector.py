@@ -1,22 +1,24 @@
 #Known issues:
 #-Cannot register Santa Sena Border Crossing and requires manual override, high priority (Fixed-Removed accented n from map name)
 #-Occasionally cannot register Zarqwa Border Crossing and requires manual override, medium priority (Fixed-Added Zarawa Hydroelectric to map list)
+#-Cannot handle joining games in progress, mostly on El Asilo.
 
 
-
-
+#Note- All coordinates are for 1920x1080 screens, if you have a 1440 or 4k screen, the values will not be correct
 
 
 
 import pyautogui
 import pydirectinput
-from PIL import Image
 import pytesseract
 import numpy as np
+import sys
 from time import sleep
+
 playButtonCoords = [290,870]
 gameModeCoords = [[190,690],[380,720]]
 mapCoords = [[190,720],[450,745]]
+lobbyLeaveButtonCoords = [300,930]
 confirmLobbyLeaveButtonCoords = [700,660]
 quickPlayCoords = [[190,700],[295,730]]
 
@@ -24,11 +26,15 @@ mapList = ["Farm 18","Mercado Las Almas","Breenbergh Hotel","Taraq","Crown Racew
 misreadMaps = ["Fl Asilo","Zarawa Hydroelectric","Al Baara Fortress"]#Maps consistently misread by the image-to-text function
 mapList.extend(misreadMaps)
 mapList = ["_".join(m.lower().split(" ")) for m in mapList]
-approvedMapList = ["Taraq","Shoot House"]
+#Since you'll see this function quite a bit, I'll explain it here.
+#Essentially, what "_".join().split(" ") does is replace all of the spaces with underscores.
+#For example, if you passed in farm 18 as input, it would return farm_18.
+
+approvedMapList = ["Taraq","Shoot House"] #Edit this if you want to use more maps for longshots or anything else.
 approvedMapList = ["_".join(m.lower().split(" ")) for m in approvedMapList]
 
-import sys
-def progressbar(it, prefix="", size=60, out=sys.stdout): # Python3.3+
+
+def progressbar(it, prefix="", size=60, out=sys.stdout):
     count = len(it)
     def show(j):
         x = int(size*j/count)
@@ -41,6 +47,7 @@ def progressbar(it, prefix="", size=60, out=sys.stdout): # Python3.3+
     print("\n", flush=True, file=out)
 
 def read(coords1,coords2,index=0):
+    """Takes in a pair of coords and returns any text between them."""
     try:
         image = pyautogui.screenshot(region=[coords1[0],coords1[1],coords2[0]-coords1[0],coords2[1]-coords1[1]])
     except OSError:
@@ -53,16 +60,15 @@ def read(coords1,coords2,index=0):
 Main Loop:
 Click Quick Play (playButtonCoords)
 Constantly read mapCoords. If it is in the map list but not in the approved map list, leave the game by pressing esc and confirm by pressing up twice and space.
-
 """
 map = ""
 gameMode = ""
 
 def newGame():
     print("Escaping queue.")
-    pydirectinput.click(300,930)
+    pydirectinput.click(lobbyLeaveButtonCoords[0],lobbyLeaveButtonCoords[1])
     sleep(0.1)
-    pydirectinput.click(700,660)
+    pydirectinput.click(confirmLobbyLeaveButtonCoords[0],confirmLobbyLeaveButtonCoords[1])
     sleep(0.1)
     loop()
 def loop(hibernate=False):
@@ -81,7 +87,6 @@ def loop(hibernate=False):
         print("Ready to initiate matchmaking: current approved maps are:", *approvedMapList,sep="\n-")
     oldmap = currentmap
     currentmap = "_".join(read(mapCoords[0],mapCoords[1]).lower().split(" ")).strip()
-    
     while currentmap not in mapList:
         if oldmap != currentmap:
             print(currentmap)
