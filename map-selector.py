@@ -75,8 +75,6 @@ def newGame():
     sleep(0.1)
     loop()
 def loop(hibernate=False):
-    currentmap = ""
-    oldmap = ""
     if hibernate == False:
         pydirectinput.click(playButtonCoords[0],playButtonCoords[1])#click quick play button
         print("Joined Quick Play.")
@@ -88,11 +86,8 @@ def loop(hibernate=False):
         for i in progressbar(range(60),"Hibernating:",60):
             sleep(1)
         print("Ready to initiate matchmaking: current approved maps are:", *approvedMapList,sep="\n-")
-    oldmap = currentmap
     currentmap = "_".join(read(mapCoords[0],mapCoords[1]).lower().split(" ")).strip()
     while currentmap not in mapList:
-        if oldmap != currentmap:
-            print(currentmap)
         currentmap = "_".join(read(mapCoords[0],mapCoords[1]).lower().split(" ")).strip()
     if currentmap in mapList and currentmap not in approvedMapList:
         print(currentmap+" not in approved list; restarting queue.")
