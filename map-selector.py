@@ -9,7 +9,6 @@
 
 try:
     import pyautogui
-    import peepee
     import pydirectinput
     import pytesseract
     import numpy as np
