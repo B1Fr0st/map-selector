@@ -4,16 +4,20 @@
 #-Cannot handle joining games in progress, mostly on El Asilo.
 
 
-#Note- All coordinates are for 1920x1080 screens, if you have a 1440 or 4k screen, the values will not be correct
+#Note- All coordinates are for 1920x1080 screens, if you have a 1440 or 4k screen, the values will not be correct.
 
 
-
-import pyautogui
-import pydirectinput
-import pytesseract
-import numpy as np
-import sys
-from time import sleep
+try:
+    import pyautogui
+    import peepee
+    import pydirectinput
+    import pytesseract
+    import numpy as np
+    import sys
+    from time import sleep
+except ImportError:
+    print("One or more required module is not installed, required modules:\npyautogui\npydirectinput\npytesseract\nnumpy")
+    exit()
 
 playButtonCoords = [290,870]
 gameModeCoords = [[190,690],[380,720]]
