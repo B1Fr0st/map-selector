@@ -1,4 +1,4 @@
-#Known issues:
+#Known issues with Quick Play:
 #-Cannot register Santa Sena Border Crossing and requires manual override, high priority (Fixed-Removed accented n from map name)
 #-Occasionally cannot register Zarqwa Border Crossing and requires manual override, medium priority (Fixed-Added Zarawa Hydroelectric to map list)
 #-Cannot handle joining games in progress, mostly on El Asilo.
@@ -7,6 +7,9 @@
 #Note- All coordinates are for 1920x1080 screens, if you have a 1440 or 4k screen, the values will not be correct.
 
 
+tier1 = False #This is in beta currently; keep a closer eye on it than normal. Don't touch the mouse or keyboard at all.
+#Known issues with Tier 1:
+#-Frequently messes up restarting queue after an undesirable map.
 try:
     import pyautogui
     import pydirectinput
@@ -24,6 +27,7 @@ mapCoords = [[190,720],[450,745]]
 lobbyLeaveButtonCoords = [300,930]
 confirmLobbyLeaveButtonCoords = [700,660]
 quickPlayCoords = [[190,700],[295,730]]
+multiplayerCoords = [5,467]
 
 mapList = ["Farm 18","Mercado Las Almas","Breenbergh Hotel","Taraq","Crown Raceway","Embassy","El Asilo","Shoot House","Shipment","Zarqwa Hydroelectric","Al Bagra Fortress","Santa Sena Border Crossing"]
 misreadMaps = ["Fl Asilo","Zarawa Hydroelectric","Al Baara Fortress"]#Maps consistently misread by the image-to-text function
@@ -67,21 +71,35 @@ Constantly read mapCoords. If it is in the map list but not in the approved map 
 map = ""
 gameMode = ""
 
-def newGame():
+def newGame(tier1):
     print("Escaping queue.")
+    pydirectinput.click(960,540)#Focuses on game if you were scrolling on a second monitor
     pydirectinput.click(lobbyLeaveButtonCoords[0],lobbyLeaveButtonCoords[1])
     sleep(0.1)
     pydirectinput.click(confirmLobbyLeaveButtonCoords[0],confirmLobbyLeaveButtonCoords[1])
     sleep(0.1)
-    loop()
-def loop(hibernate=False):
+    loop(tier1=tier1)
+def loop(hibernate=False,tier1=False):
     if hibernate == False:
-        pydirectinput.click(playButtonCoords[0],playButtonCoords[1])#click quick play button
-        print("Joined Quick Play.")
-        sleep(0.1)
-        pydirectinput.click(playButtonCoords[0],playButtonCoords[1])#click find match button
-        print("Matchmaking initiated; current approved maps are:", *approvedMapList,sep="\n-")
-        sleep(0.1)
+        if tier1 == False:
+            pydirectinput.click(playButtonCoords[0],playButtonCoords[1])#click quick play button
+            print("Joined Quick Play.")
+            sleep(0.1)
+            pydirectinput.click(playButtonCoords[0],playButtonCoords[1])#click find match button
+            print("Matchmaking initiated; current approved maps are:", *approvedMapList,sep="\n-")
+            sleep(0.1)
+        elif tier1 == True:
+            pydirectinput.moveTo(multiplayerCoords[0],multiplayerCoords[1])
+            sleep(5)
+            pydirectinput.press("down")
+            pydirectinput.press("down")
+            pydirectinput.press("right")
+            pydirectinput.press("right")
+            pydirectinput.press("space")
+            print("Joined Tier 1.")
+            sleep(0.2)
+            pydirectinput.press("space")
+            print("Matchmaking initiated; current approved maps are:", *approvedMapList,sep="\n-")
     elif hibernate == True:
         for i in progressbar(range(60),"Hibernating:",60):
             sleep(1)
@@ -91,13 +109,13 @@ def loop(hibernate=False):
         currentmap = "_".join(read(mapCoords[0],mapCoords[1]).lower().split(" ")).strip()
     if currentmap in mapList and currentmap not in approvedMapList:
         print(currentmap+" not in approved list; restarting queue.")
-        newGame()
+        newGame(tier1)
     elif currentmap in approvedMapList:
         print(currentmap+" in approved list;joining game and hibernating for 60 seconds.")
-        loop(hibernate=True)
+        loop(hibernate=True,tier1=tier1)
 
 
 
 sleep(4)
-loop()
+loop(tier1=True)
 
