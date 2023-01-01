@@ -1,0 +1,301 @@
+Xten_Rr_40:
+
+Description:Asilencer with a significant increase range and bullet velocity. Speed and stability decreased. 
+
+Type:muzzle
+
+Pros:
+Sound Suppression
+Bullet Velocity
+Damage Range
+Recoil Smoothness
+
+Cons:
+Aim Down Sight Speed
+Aiming Stability
+
+-----------------------------------------------------------------------
+
+Forge_Ox90_F:
+
+Description:Reduce your weapon's sound signature and keep your position concealed for covert Operations. 
+
+Type:muzzle
+
+Pros:
+Sound Suppression
+Recoil Smoothness
+
+Cons:
+Damage Range
+
+-----------------------------------------------------------------------
+
+Sa_Schalldampfer_99:
+
+Description:Silently take down your target with the smoother recoil of this Swiss-made suppressor. 
+
+Type:muzzle
+
+Pros:
+Sound Suppression
+Bullet Velocity
+Recoil Smoothness
+Recoil Control
+
+Cons:
+Aim Down Sight Speed
+Aiming Stability a
+Aim Walking Speed
+
+Damage Range
+
+-----------------------------------------------------------------------
+
+Singuard_Mkv:
+
+Description:A Singuard silencer with excellent sound suppression, range, and decent recoil control. 
+
+Type:muzzle
+
+Pros:
+Sound Suppression
+Bullet Velocity
+Damage Range
+Recoil Smoothness
+
+Cons:
+Aiming Stall
+Aim Walking
+
+-----------------------------------------------------------------------
+
+Exf_Huntress_390:
+
+Description:Asilencer from Expedite Firearms with an increase in recoil smoothness. 
+
+Type:muzzle
+
+Pros:
+Sound Suppression
+Bullet Velocity
+Recoil Smoothness
+Recoil Control
+
+Cons:
+Aim Down Sight Speed
+Aiming Stability
+
+Aim Walking Speed
+Damage Range
+
+-----------------------------------------------------------------------
+
+Xten_Black_Kite:
+
+Description:Amonolithic core suppressor from XTen. Best-in-class recoil smoothness with a slight increase to range. 
+
+Type:muzzle
+
+Pros:
+Sound Suppression
+Bullet Velocity
+Recoil Smoothness
+Recoil Control
+
+Cons:
+Aim Down Sight Speed
+Aim Walking Speed
+Aiming Stability
+
+-----------------------------------------------------------------------
+
+Fss_Covert_Iv:
+
+Description:A suppressor with silky smooth recoil and accuracy at the cost of speed. 
+
+Type:muzzle
+
+Pros:
+Sound Suppression
+Recoil Smoothness
+Recoil Control
+
+Cons:
+Aim Down Sight Speed
+Damage Range
+
+Aim Walking Speed
+Aiming Stability
+
+-----------------------------------------------------------------------
+
+Bruen_Pendulum:
+
+Description:Significant vertical recoil control and increased accuracy with a slight impact to handling. 
+
+Type:muzzle
+
+Pros:
+Vertical Recoil Control
+Horizontal Recoil Control
+
+Cons:
+Aim Down Sight Speed
+Aiming Stability
+
+-----------------------------------------------------------------------
+
+Avr_T90_Comp:
+
+Description:This compensator offers a significant reduction to horizontal recoil. 
+
+Type:muzzle
+
+Pros:
+Horizontal Recoil Control
+Vertical Recoil Control
+
+Cons:
+Aim Down Sight Speed
+Aiming Stability
+
+-----------------------------------------------------------------------
+
+Lacerta_Compensator:
+
+Description:Reduced vertical and horizontal recoil, this compensator keeps shots on target. 
+
+Type:muzzle
+
+Pros:
+Horizontal Recoil Control
+
+Cons:
+Aim Down Sight Speed
+Aiming Stability
+
+-----------------------------------------------------------------------
+
+Ftac_Castle_Comp:
+
+Description:Keep your recoil under control and stay on target with this Forge Tac compensator. 
+
+Type:muzzle
+
+Pros:
+Horizontal Recoil Control
+Vertical Recoil Control
+
+Cons:
+Aim Down Sight Speed
+Aiming Stability
+
+-----------------------------------------------------------------------
+
+Xten_Razor_Comp:
+
+Description:This XTen compensator has been engineered for superior muzzle control and accuracy. 
+
+Type:muzzle
+
+Pros:
+Horizontal Recoil Control
+Vertical Recoil Control
+
+Cons:
+Aim Down Sight Speed
+Aiming Stability
+
+-----------------------------------------------------------------------
+
+Xrk_Sandstorm:
+
+Description:A ported compensator from XRK that vents casses upward to reduce vertical recoil. 
+
+Type:muzzle
+
+Pros:
+Vertical Recoil Control
+
+Cons:
+Aim Down Sight Speed
+Aiming Stability
+
+-----------------------------------------------------------------------
+
+Lockshot_Kt85:
+
+Description:Shot after shot stays center mass with the recoil control of this compensator. 
+
+Type:muzzle
+
+Pros:
+Horizontal Recoil Control
+Vertical Recoil Control
+
+Cons:
+Aim Down Sight Speed
+Aiming Stability
+
+-----------------------------------------------------------------------
+
+Bruen_Cubic_Comp:
+
+Description:A basic and reliable compensator from Bruen. Reduces recoil in all directions with a minor impact to handling. 
+
+Type:muzzle
+
+Pros:
+Horizontal Recoil Control
+Vertical Recoil Control
+
+Cons:
+Aim Down Sight Speed
+Aiming Stability
+
+-----------------------------------------------------------------------
+
+Spiral_V3.5_Flash_Hidef:
+
+Description:Keeps flash concealed as well as assists with gun kick control. 
+
+Type:muzzle
+
+Pros:
+Muzzle Flash Concealment
+Recoil Steadiness
+
+Cons:
+Aim Down Sight Speed
+Aiming Stability
+
+-----------------------------------------------------------------------
+
+Fox_202_Flash_Hider:
+
+Description:Helps to hid muzzle flash from assailants and improves recoil stabilization. 
+
+Type:muzzle
+
+Pros:
+Muzzle Flash Concealment
+Recoil Stabilization
+
+Cons:
+Aim Down Sight Speed
+Aiming Stability
+
+-----------------------------------------------------------------------
+
+Xrk_Knockout_Breach:
+
+Description:Get more out of melee damage with this muzzle-mounted breacher. 
+
+Type:muzzle
+
+Pros:
+Melee Damage
+
+Cons:
+Aim Down Sight Speed
