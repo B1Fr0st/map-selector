@@ -7,7 +7,7 @@
 #Note- All coordinates are for 1920x1080 screens, if you have a 1440 or 4k screen, the values will not be correct.
 
 
-tier1 = True #This is in beta currently; keep a closer eye on it than normal. Don't touch the mouse or keyboard at all.
+tier1 = False #This is in beta currently; keep a closer eye on it than normal. Don't touch the mouse or keyboard at all.
 #Known issues with Tier 1:
 #-Frequently messes up restarting queue after an undesirable map.(Fixed-Keyboard inputs are unreliable, only use mouse clicks)
 #-Joins quick play instead of tier 1 after an undesirable map.(Fixed)
@@ -20,9 +20,12 @@ try:
     import pytesseract
     import numpy as np
     import sys
+    import requests
     from time import sleep
+
+
 except ImportError:
-    print("One or more required module is not installed, required modules:\npyautogui\npydirectinput\npytesseract\nnumpy")
+    print("One or more required module is not installed, required modules:\npyautogui\npydirectinput\npytesseract\nnumpy\nrequests")
     exit()
 
 playButtonCoords = [290,870]
@@ -42,8 +45,10 @@ mapList = ["_".join(m.lower().split(" ")) for m in mapList]
 #Essentially, what "_".join().split(" ") does is replace all of the spaces with underscores.
 #For example, if you passed in farm 18 as input, it would return farm_18.
 
-approvedMapList = ["Taraq","Shoot House"] #Edit this if you want to use more maps for longshots or anything else.
+approvedMapList = ["Shipment"] #Edit this if you want to use more maps for longshots or anything else.
 approvedMapList = ["_".join(m.lower().split(" ")) for m in approvedMapList]
+
+
 
 
 def progressbar(it, prefix="", size=60, out=sys.stdout):
@@ -85,6 +90,7 @@ def newGame(tier1):
     print("NEWGAME FINISHED")
     loop(hibernate=False,tier1=tier1)
 def loop(hibernate=False,tier1=False):
+    pydirectinput.click(1920,0)
     if hibernate == False:
         if tier1 == False:
             print("Joining quick play...")
@@ -99,6 +105,7 @@ def loop(hibernate=False,tier1=False):
             pydirectinput.click(multiplayerCoords[0],multiplayerCoords[1])
             sleep(0.3)
             pydirectinput.click(tier1Coords[0],tier1Coords[1])
+            pydirectinput.press("space")
             print("Joined Tier 1.")
             sleep(0.1)
             pydirectinput.press("space")
@@ -115,10 +122,23 @@ def loop(hibernate=False,tier1=False):
         newGame(tier1)
     elif currentmap in approvedMapList:
         print(currentmap+" in approved list;joining game and hibernating for 60 seconds.")
+        print("Notifying user...")
+        """
+        with open("api-key.txt","r") as key:
+            key = key.read().strip()
+        requests.post('https://api.mynotifier.app', {
+              "apiKey": key, # This is your own private key
+              "message": "Game Found", # Could be anything
+              "description": f"{currentmap} game starting now", # Optional
+              "type": "info", # info, error, warning or success
+        })
+        """
         loop(hibernate=True,tier1=tier1)
 
 
 
-sleep(6)
 loop(tier1=tier1)
+
+
+
 
