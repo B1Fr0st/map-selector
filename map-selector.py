@@ -94,9 +94,10 @@ def loop(hibernate=False,tier1=False):
     if hibernate == False:
         if tier1 == False:
             print("Joining quick play...")
+            pydirectinput.click(playButtonCoords[0],playButtonCoords[1])
             pydirectinput.click(playButtonCoords[0],playButtonCoords[1])#click quick play button
             print("Joined Quick Play.")
-            sleep(0.1)
+            sleep(0.2)
             pydirectinput.click(playButtonCoords[0],playButtonCoords[1])#click find match button
             print("Matchmaking initiated; current approved maps are:", *approvedMapList,sep="\n-")
             sleep(0.1)
