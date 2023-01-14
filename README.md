@@ -21,9 +21,9 @@ pip command: ```pip install pyautogui pydirectinput pytesseract numpy requests``
 
 You will also need the latest version of Tesseract x64, downloadable from [UB-Mannheim](https://github.com/UB-Mannheim/tesseract/wiki)
 
-Direct Download link: [tesseract-ocr-w32-setup-5.3.0.20221222.exe](https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w32-setup-5.3.0.20221222.exe)\\
+Direct Download link: [tesseract-ocr-w32-setup-5.3.0.20221222.exe](https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w32-setup-5.3.0.20221222.exe)
 
-Leave everything default, then go into your system environment variables, click on edit path, then add C:\Program Files(x86)\Tesseract-OCR to your path. This [site] (https://ironsoftware.com/csharp/ocr/blog/ocr-tools/tesseract-ocr-windows/) does a good guide on install if you are stuck.
+Leave everything default, then go into your system environment variables, click on edit path, then add C:\Program Files(x86)\Tesseract-OCR to your path. This [site](https://ironsoftware.com/csharp/ocr/blog/ocr-tools/tesseract-ocr-windows/) does a good guide on install if you are stuck.
 
 This also only has coordinates for 1920x1080 displays; if you have a 1440 or 4k display and can give coordinates, submit a pull request and I can approve it.
 
